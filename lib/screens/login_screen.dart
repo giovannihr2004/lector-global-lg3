@@ -1,6 +1,6 @@
 // 📄 login_screen.dart
-// 🕓 Última actualización: 2025-05-28 11:47 (GMT-5)
-// 📌 Versión completa con redirección corregida a WelcomeScreen
+// 🕓 Última actualización: 2025-05-28 12:12 (GMT-5)
+// 📌 Versión completa con verificación obligatoria de correo electrónico y redirección a WelcomeScreen
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,12 +26,22 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
-      if (context.mounted) {
-        Navigator.of(context).pushReplacementNamed('/welcome');
+
+      final user = userCredential.user;
+
+      if (user != null && user.emailVerified) {
+        if (context.mounted) {
+          Navigator.of(context).pushReplacementNamed('/welcome');
+        }
+      } else {
+        await FirebaseAuth.instance.signOut();
+        setState(() {
+          _errorMessage = 'Por favor verifica tu correo electrónico antes de ingresar.';
+        });
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
