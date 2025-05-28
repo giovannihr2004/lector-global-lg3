@@ -1,11 +1,13 @@
 // 📄 home_screen.dart
-// 🕓 Última actualización: 2025-05-28 10:45 (GMT-5)
-// 📌 Parte 1 de 3: Estructura inicial, imports y declaración del widget principal.
+// 🕓 Última actualización: 2025-05-28 11:55 (GMT-5)
+// ✅ Versión con menú lateral incluido (DrawerMenu)
 
 import 'package:flutter/material.dart';
+import '../widgets/drawer_menu.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,6 +15,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Lector Global'),
         centerTitle: true,
       ),
+      drawer: const DrawerMenu(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
