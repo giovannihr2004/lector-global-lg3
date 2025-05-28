@@ -1,6 +1,6 @@
 // 📄 login_screen.dart
-// 🕓 Última actualización: 2025-05-28 11:15 (GMT-5)
-// 📌 Parte 1 de 3: Imports, clase principal y estructura inicial del formulario.
+// 🕓 Última actualización: 2025-05-28 11:47 (GMT-5)
+// 📌 Versión completa con redirección corregida a WelcomeScreen
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,7 +18,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   bool _isLoading = false;
   String? _errorMessage;
-// 📌 Parte 2 de 3: Método para iniciar sesión y construcción del widget.
 
   Future<void> _signIn() async {
     setState(() {
@@ -32,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
         password: _passwordController.text,
       );
       if (context.mounted) {
-        Navigator.of(context).pushReplacementNamed('/');
+        Navigator.of(context).pushReplacementNamed('/welcome');
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -80,8 +79,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     value!.isEmpty ? 'Ingrese su contraseña' : null,
               ),
               const SizedBox(height: 20),
-// 📌 Parte 3 de 3: Botón de inicio de sesión y cierre del widget.
-
               ElevatedButton(
                 onPressed: _isLoading
                     ? null
