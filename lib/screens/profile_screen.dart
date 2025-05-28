@@ -1,8 +1,9 @@
 // 📄 profile_screen.dart
-// 🕓 Última actualización: 2025-05-28 10:50 (GMT-5)
+// 🕓 Última actualización: 2025-05-28 11:57 (GMT-5)
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../widgets/drawer_menu.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -16,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
         title: const Text('Mi perfil'),
         centerTitle: true,
       ),
+      drawer: const DrawerMenu(), // ✅ Integración del menú lateral
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
