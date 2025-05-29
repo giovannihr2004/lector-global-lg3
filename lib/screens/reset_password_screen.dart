@@ -1,8 +1,10 @@
 // 📄 reset_password_screen.dart
-// 🕓 Última actualización: 2025-05-28 11:25 (GMT-5)
+// 🕓 Última actualización: 2025-05-29 07:52 (GMT-5)
+// ✅ Internacionalización completa
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -18,9 +20,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   Future<void> _sendResetEmail() async {
     final email = _emailController.text.trim();
+    final loc = AppLocalizations.of(context)!;
+
     if (email.isEmpty || !email.contains('@')) {
       setState(() {
-        _errorText = 'Por favor, introduce un correo válido.';
+        _errorText = loc.invalidEmail;
       });
       return;
     }
@@ -33,16 +37,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       });
     } on FirebaseAuthException catch (e) {
       setState(() {
-        _errorText = e.message ?? 'Ocurrió un error.';
+        _errorText = e.message ?? loc.unexpectedError;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recuperar contraseña'),
+        title: Text(loc.resetPasswordTitle),
         centerTitle: true,
       ),
       body: Padding(
@@ -50,16 +56,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Ingresa tu correo electrónico para restablecer tu contraseña:',
-              style: TextStyle(fontSize: 16),
+            Text(
+              loc.resetPasswordPrompt,
+              style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 20),
             TextField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: 'Correo electrónico',
+                labelText: loc.emailLabel,
                 errorText: _errorText,
                 border: const OutlineInputBorder(),
               ),
@@ -67,13 +73,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _sendResetEmail,
-              child: const Text('Enviar enlace de recuperación'),
+              child: Text(loc.sendResetLink),
             ),
             const SizedBox(height: 20),
             if (_emailSent)
-              const Text(
-                '¡Correo enviado! Revisa tu bandeja de entrada.',
-                style: TextStyle(color: Colors.green),
+              Text(
+                loc.emailSentMessage,
+                style: const TextStyle(color: Colors.green),
               ),
           ],
         ),
