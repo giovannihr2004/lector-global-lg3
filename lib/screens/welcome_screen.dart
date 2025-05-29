@@ -1,6 +1,6 @@
 // 📄 welcome_screen.dart
-// 🕓 Última actualización: 2025-05-28 23:47 (GMT-5)
-// ✅ Compatible con cambio dinámico de idioma desde main.dart
+// 🕓 Última actualización: 2025-05-29 08:25 (GMT-5)
+// ✅ Compatible con cambio dinámico de idioma desde main.dart e internacionalización completa
 
 import 'package:flutter/material.dart';
 import 'package:lector_global_lg3/widgets/language_selector.dart';
