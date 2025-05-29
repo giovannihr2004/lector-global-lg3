@@ -11,5 +11,11 @@
   "invalidEmail": "Correo inválido",
   "passwordTooShort": "Mínimo 6 caracteres",
   "registerButton": "Registrarse",
-  "alreadyHaveAccount": "¿Ya tienes cuenta? Inicia sesión"
+  "alreadyHaveAccount": "¿Ya tienes cuenta? Inicia sesión",
+  "loginTitle": "Iniciar sesión",
+  "loginButton": "Ingresar",
+  "enterEmail": "Ingrese su correo",
+  "enterPassword": "Ingrese su contraseña",
+  "noAccountPrompt": "¿No tienes cuenta? Regístrate",
+  "verifyEmailError": "Por favor verifica tu correo electrónico antes de ingresar."
 }

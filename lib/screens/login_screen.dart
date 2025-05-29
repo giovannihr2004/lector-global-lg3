@@ -1,9 +1,10 @@
 // 📄 login_screen.dart
-// 🕓 Última actualización: 2025-05-28 12:12 (GMT-5)
-// 📌 Versión completa con verificación obligatoria de correo electrónico y redirección a WelcomeScreen
+// 🕓 Última actualización: 2025-05-29 07:39 (GMT-5)
+// ✅ Internacionalización completa con AppLocalizations
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -40,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
       } else {
         await FirebaseAuth.instance.signOut();
         setState(() {
-          _errorMessage = 'Por favor verifica tu correo electrónico antes de ingresar.';
+          _errorMessage = AppLocalizations.of(context)!.verifyEmailError;
         });
       }
     } on FirebaseAuthException catch (e) {
@@ -56,9 +57,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Iniciar sesión'),
+        title: Text(loc.loginTitle),
         centerTitle: true,
       ),
       body: Padding(
@@ -75,18 +78,18 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20),
               TextFormField(
                 controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Correo electrónico'),
+                decoration: InputDecoration(labelText: loc.emailLabel),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) =>
-                    value!.isEmpty ? 'Ingrese su correo' : null,
+                    value!.isEmpty ? loc.enterEmail : null,
               ),
               const SizedBox(height: 20),
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Contraseña'),
+                decoration: InputDecoration(labelText: loc.passwordLabel),
                 obscureText: true,
                 validator: (value) =>
-                    value!.isEmpty ? 'Ingrese su contraseña' : null,
+                    value!.isEmpty ? loc.enterPassword : null,
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -99,14 +102,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                 child: _isLoading
                     ? const CircularProgressIndicator()
-                    : const Text('Ingresar'),
+                    : Text(loc.loginButton),
               ),
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed('/register');
                 },
-                child: const Text('¿No tienes cuenta? Regístrate'),
+                child: Text(loc.noAccountPrompt),
               ),
             ],
           ),

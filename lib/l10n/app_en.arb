@@ -11,5 +11,11 @@
   "invalidEmail": "Invalid email",
   "passwordTooShort": "At least 6 characters",
   "registerButton": "Sign up",
-  "alreadyHaveAccount": "Already have an account? Sign in"
+  "alreadyHaveAccount": "Already have an account? Sign in",
+  "loginTitle": "Sign in",
+  "loginButton": "Sign in",
+  "enterEmail": "Enter your email",
+  "enterPassword": "Enter your password",
+  "noAccountPrompt": "Don't have an account? Register",
+  "verifyEmailError": "Please verify your email before signing in."
 }
