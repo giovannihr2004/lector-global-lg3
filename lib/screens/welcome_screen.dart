@@ -1,6 +1,6 @@
 // 📄 welcome_screen.dart
-// 🕓 Última actualización: 2025-05-29 09:10 (GMT-5)
-// ✅ Usa CustomButton con soporte de internacionalización y cambio dinámico de idioma
+// 🕓 Última actualización: 2025-05-29 10:25 (GMT-5)
+// ✅ Logo gráfico integrado, compatible con cambio dinámico de idioma e internacionalización
 
 import 'package:flutter/material.dart';
 import 'package:lector_global_lg3/widgets/language_selector.dart';
@@ -22,10 +22,11 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.auto_stories,
-              size: 100,
-              color: Colors.indigo,
+            Image.asset(
+              'assets/images/logo_welcome.png',
+              width: 120,
+              height: 120,
+              fit: BoxFit.contain,
             ),
             const SizedBox(height: 30),
             Text(
