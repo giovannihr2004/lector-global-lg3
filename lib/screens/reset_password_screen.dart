@@ -1,6 +1,6 @@
 // 📄 reset_password_screen.dart
-// 🕓 Última actualización: 2025-05-29 07:52 (GMT-5)
-// ✅ Internacionalización completa
+// 🕓 Última actualización: 2025-05-29 08:45 (GMT-5)
+// ✅ Internacionalización completa y validada
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
