@@ -4,5 +4,12 @@
   "drawerHome": "Inicio",
   "drawerProfile": "Perfil",
   "drawerLanguage": "Idioma",
-  "drawerLogout": "Cerrar sesión"
+  "drawerLogout": "Cerrar sesión",
+  "registerTitle": "Registro",
+  "emailLabel": "Correo electrónico",
+  "passwordLabel": "Contraseña",
+  "invalidEmail": "Correo inválido",
+  "passwordTooShort": "Mínimo 6 caracteres",
+  "registerButton": "Registrarse",
+  "alreadyHaveAccount": "¿Ya tienes cuenta? Inicia sesión"
 }

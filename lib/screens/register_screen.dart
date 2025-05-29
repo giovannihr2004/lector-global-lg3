@@ -1,8 +1,10 @@
 // 📄 register_screen.dart
-// 🕓 Última actualización: 2025-05-28 11:17 (GMT-5)
+// 🕓 Última actualización: 2025-05-29 07:26 (GMT-5)
+// ✅ Internacionalización integrada con AppLocalizations
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -54,9 +56,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registro'),
+        title: Text(loc.registerTitle),
         centerTitle: true,
       ),
       body: Padding(
@@ -67,19 +71,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               TextFormField(
                 controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Correo electrónico'),
+                decoration: InputDecoration(labelText: loc.emailLabel),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) =>
-                    value != null && value.contains('@') ? null : 'Correo inválido',
+                    value != null && value.contains('@') ? null : loc.invalidEmail,
               ),
               const SizedBox(height: 20),
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Contraseña'),
+                decoration: InputDecoration(labelText: loc.passwordLabel),
                 obscureText: true,
                 validator: (value) => value != null && value.length >= 6
                     ? null
-                    : 'Mínimo 6 caracteres',
+                    : loc.passwordTooShort,
               ),
               const SizedBox(height: 30),
               if (_errorMessage != null)
@@ -92,14 +96,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 onPressed: _isLoading ? null : _register,
                 child: _isLoading
                     ? const CircularProgressIndicator()
-                    : const Text('Registrarse'),
+                    : Text(loc.registerButton),
               ),
               const SizedBox(height: 20),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacementNamed('/login');
                 },
-                child: const Text('¿Ya tienes cuenta? Inicia sesión'),
+                child: Text(loc.alreadyHaveAccount),
               ),
             ],
           ),

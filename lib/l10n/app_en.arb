@@ -4,5 +4,12 @@
   "drawerHome": "Home",
   "drawerProfile": "Profile",
   "drawerLanguage": "Language",
-  "drawerLogout": "Logout"
+  "drawerLogout": "Logout",
+  "registerTitle": "Register",
+  "emailLabel": "Email",
+  "passwordLabel": "Password",
+  "invalidEmail": "Invalid email",
+  "passwordTooShort": "At least 6 characters",
+  "registerButton": "Sign up",
+  "alreadyHaveAccount": "Already have an account? Sign in"
 }
