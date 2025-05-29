@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "494781750368",
+    "project_id": "lector-global-3",
+    "storage_bucket": "lector-global-3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494781750368:android:e3e1e10b094639493db705",
+        "android_client_info": {
+          "package_name": "com.lectorglobal.lg3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9LfHzvhOKSA2QXLYRehuu2iq_-PeMGMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

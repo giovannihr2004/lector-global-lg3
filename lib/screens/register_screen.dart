@@ -1,10 +1,11 @@
 // 📄 register_screen.dart
-// 🕓 Última actualización: 2025-05-29 07:26 (GMT-5)
-// ✅ Internacionalización integrada con AppLocalizations
+// 🕓 Última actualización: 2025-05-29 09:20 (GMT-5)
+// ✅ Uso de CustomButton con soporte internacional y carga visual
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../widgets/custom_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -92,11 +93,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: const TextStyle(color: Colors.red),
                 ),
               const SizedBox(height: 20),
-              ElevatedButton(
+              CustomButton(
+                textKey: 'registerButton',
                 onPressed: _isLoading ? null : _register,
-                child: _isLoading
-                    ? const CircularProgressIndicator()
-                    : Text(loc.registerButton),
+                isLoading: _isLoading,
               ),
               const SizedBox(height: 20),
               TextButton(

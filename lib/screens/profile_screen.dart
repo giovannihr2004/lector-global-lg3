@@ -1,11 +1,12 @@
 // 📄 profile_screen.dart
-// 🕓 Última actualización: 2025-05-29 08:10 (GMT-5)
-// ✅ Internacionalización completa con AppLocalizations
+// 🕓 Última actualización: 2025-05-29 10:05 (GMT-5)
+// ✅ Uso de CustomButton con soporte internacional y estilo personalizado
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../widgets/drawer_menu.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../widgets/custom_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -45,17 +46,16 @@ class ProfileScreen extends StatelessWidget {
             ),
             const Spacer(),
             Center(
-              child: ElevatedButton(
+              child: CustomButton(
+                textKey: 'logoutButton',
                 onPressed: () async {
                   await FirebaseAuth.instance.signOut();
                   if (context.mounted) {
                     Navigator.of(context).pushReplacementNamed('/login');
                   }
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                ),
-                child: Text(loc.logoutButton),
+                isLoading: false,
+                color: Colors.redAccent,
               ),
             ),
           ],

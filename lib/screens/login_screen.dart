@@ -1,10 +1,11 @@
 // 📄 login_screen.dart
-// 🕓 Última actualización: 2025-05-29 07:39 (GMT-5)
-// ✅ Internacionalización completa con AppLocalizations
+// 🕓 Última actualización: 2025-05-29 09:30 (GMT-5)
+// ✅ Uso de CustomButton con soporte internacional y carga visual
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../widgets/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -92,7 +93,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     value!.isEmpty ? loc.enterPassword : null,
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
+              CustomButton(
+                textKey: 'loginButton',
                 onPressed: _isLoading
                     ? null
                     : () {
@@ -100,9 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _signIn();
                         }
                       },
-                child: _isLoading
-                    ? const CircularProgressIndicator()
-                    : Text(loc.loginButton),
+                isLoading: _isLoading,
               ),
               const SizedBox(height: 20),
               TextButton(

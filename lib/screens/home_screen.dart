@@ -1,10 +1,11 @@
 // 📄 home_screen.dart
-// 🕓 Última actualización: 2025-05-29 07:59 (GMT-5)
-// ✅ Internacionalización completa y menú lateral incluido
+// 🕓 Última actualización: 2025-05-29 09:55 (GMT-5)
+// ✅ Uso de CustomButton con internacionalización y menú lateral incluido
 
 import 'package:flutter/material.dart';
 import '../widgets/drawer_menu.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../widgets/custom_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -28,11 +29,12 @@ class HomeScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
+            CustomButton(
+              textKey: 'startButton',
               onPressed: () {
                 // Acción futura: ir a sección de lectura
               },
-              child: Text(loc.startButton),
+              isLoading: false,
             ),
           ],
         ),

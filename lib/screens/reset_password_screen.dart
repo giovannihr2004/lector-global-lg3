@@ -1,10 +1,11 @@
 // 📄 reset_password_screen.dart
-// 🕓 Última actualización: 2025-05-29 08:45 (GMT-5)
-// ✅ Internacionalización completa y validada
+// 🕓 Última actualización: 2025-05-29 09:50 (GMT-5)
+// ✅ Uso de CustomButton con internacionalización y carga visual
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../widgets/custom_button.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -17,6 +18,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final TextEditingController _emailController = TextEditingController();
   String? _errorText;
   bool _emailSent = false;
+  bool _isLoading = false;
 
   Future<void> _sendResetEmail() async {
     final email = _emailController.text.trim();
@@ -29,15 +31,23 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       return;
     }
 
+    setState(() {
+      _isLoading = true;
+      _errorText = null;
+    });
+
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       setState(() {
         _emailSent = true;
-        _errorText = null;
       });
     } on FirebaseAuthException catch (e) {
       setState(() {
         _errorText = e.message ?? loc.unexpectedError;
+      });
+    } finally {
+      setState(() {
+        _isLoading = false;
       });
     }
   }
@@ -71,9 +81,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _sendResetEmail,
-              child: Text(loc.sendResetLink),
+            CustomButton(
+              textKey: 'sendResetLink',
+              onPressed: _isLoading ? null : _sendResetEmail,
+              isLoading: _isLoading,
             ),
             const SizedBox(height: 20),
             if (_emailSent)

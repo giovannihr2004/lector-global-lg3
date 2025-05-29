@@ -1,10 +1,11 @@
 // 📄 welcome_screen.dart
-// 🕓 Última actualización: 2025-05-29 08:25 (GMT-5)
-// ✅ Compatible con cambio dinámico de idioma desde main.dart e internacionalización completa
+// 🕓 Última actualización: 2025-05-29 09:10 (GMT-5)
+// ✅ Usa CustomButton con soporte de internacionalización y cambio dinámico de idioma
 
 import 'package:flutter/material.dart';
 import 'package:lector_global_lg3/widgets/language_selector.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../widgets/custom_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final void Function(String)? onLocaleChanged;
@@ -49,11 +50,12 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-            ElevatedButton(
+            CustomButton(
+              textKey: 'startButton',
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/login');
               },
-              child: Text(localizations.startButton),
+              isLoading: false,
             ),
             const SizedBox(height: 30),
             if (onLocaleChanged != null)
