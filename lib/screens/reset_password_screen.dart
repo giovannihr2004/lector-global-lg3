@@ -1,6 +1,6 @@
 // 📄 reset_password_screen.dart
-// 🕓 Última actualización: 2025-05-29 09:50 (GMT-5)
-// ✅ Uso de CustomButton con internacionalización y carga visual
+// 🕓 Última actualización: 2025-05-29 11:10 (GMT-5)
+// ✅ Logo gráfico integrado, uso de CustomButton e internacionalización completa
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -66,6 +66,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(
+              'assets/images/logo_login.png',
+              width: 120,
+              height: 120,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(height: 20),
             Text(
               loc.resetPasswordPrompt,
               style: const TextStyle(fontSize: 16),
