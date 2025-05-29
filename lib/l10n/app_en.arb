@@ -17,5 +17,7 @@
   "enterEmail": "Enter your email",
   "enterPassword": "Enter your password",
   "noAccountPrompt": "Don't have an account? Register",
-  "verifyEmailError": "Please verify your email before signing in."
+  "verifyEmailError": "Please verify your email before signing in.",
+  "appName": "Lector Global",
+  "welcomeMessage": "Welcome to Lector Global!"
 }
