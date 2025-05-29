@@ -1,9 +1,12 @@
 ﻿// 📄 main.dart
-// 🕓 Última actualización: 2025-05-28 11:48 (GMT-5)
+// 🕓 Última actualización: 2025-05-28 23:41 (GMT-5)
+// ✅ Integra sistema de internacionalización con selector de idioma funcional
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'firebase_options.dart';
 import 'screens/welcome_screen.dart';
@@ -21,20 +24,45 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale = const Locale('es');
+
+  void _changeLocale(String languageCode) {
+    setState(() {
+      _locale = Locale(languageCode);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Lector Global',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
+      locale: _locale,
+      supportedLocales: const [
+        Locale('es'),
+        Locale('en'),
+      ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       initialRoute: '/welcome',
       routes: {
-        '/welcome': (context) => const WelcomeScreen(),
+        '/welcome': (context) => WelcomeScreen(onLocaleChanged: _changeLocale),
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
         '/reset': (context) => const ResetPasswordScreen(),
