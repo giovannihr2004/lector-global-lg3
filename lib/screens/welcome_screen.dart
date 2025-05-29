@@ -1,13 +1,20 @@
 // 📄 welcome_screen.dart
-// 🕓 Última actualización: 2025-05-28 11:26 (GMT-5)
+// 🕓 Última actualización: 2025-05-28 23:47 (GMT-5)
+// ✅ Compatible con cambio dinámico de idioma desde main.dart
 
 import 'package:flutter/material.dart';
+import 'package:lector_global_lg3/widgets/language_selector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+  final void Function(String)? onLocaleChanged;
+
+  const WelcomeScreen({super.key, this.onLocaleChanged});
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.indigo.shade50,
       body: Center(
@@ -20,21 +27,21 @@ class WelcomeScreen extends StatelessWidget {
               color: Colors.indigo,
             ),
             const SizedBox(height: 30),
-            const Text(
+            Text(
               'LECTOR GLOBAL',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Colors.indigo,
               ),
             ),
             const SizedBox(height: 20),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: Text(
-                'Si puedes leer, puedes comprender. Y si puedes comprender, puedes cambiar tu vida. Y si cambiamos vidas, cambiamos el mundo.',
+                localizations.welcomeSlogan,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontStyle: FontStyle.italic,
                   color: Colors.black54,
@@ -46,8 +53,17 @@ class WelcomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/login');
               },
-              child: const Text('Iniciar'),
+              child: Text(localizations.startButton),
             ),
+            const SizedBox(height: 30),
+            if (onLocaleChanged != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                child: LanguageSelector(
+                  selectedLanguage: Localizations.localeOf(context).languageCode,
+                  onLanguageChanged: onLocaleChanged!,
+                ),
+              ),
           ],
         ),
       ),
