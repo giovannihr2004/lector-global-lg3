@@ -19,5 +19,15 @@
   "noAccountPrompt": "Don't have an account? Register",
   "verifyEmailError": "Please verify your email before signing in.",
   "appName": "Lector Global",
-  "welcomeMessage": "Welcome to Lector Global!"
+  "welcomeMessage": "Welcome to Lector Global!",
+  "profileTitle": "My Profile",
+  "profileNameLabel": "Name:",
+  "profileEmailLabel": "Email:",
+  "notAvailable": "Not available",
+  "logoutButton": "Logout",
+  "resetPasswordTitle": "Reset Password",
+  "resetPasswordPrompt": "Enter your email address to reset your password:",
+  "sendResetLink": "Send reset link",
+  "emailSentMessage": "Email sent! Check your inbox.",
+  "unexpectedError": "An unexpected error occurred."
 }

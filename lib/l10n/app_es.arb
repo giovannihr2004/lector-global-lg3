@@ -19,5 +19,15 @@
   "noAccountPrompt": "¿No tienes cuenta? Regístrate",
   "verifyEmailError": "Por favor verifica tu correo electrónico antes de ingresar.",
   "appName": "Lector Global",
-  "welcomeMessage": "¡Bienvenido a Lector Global!"
+  "welcomeMessage": "¡Bienvenido a Lector Global!",
+  "profileTitle": "Mi perfil",
+  "profileNameLabel": "Nombre:",
+  "profileEmailLabel": "Correo:",
+  "notAvailable": "No disponible",
+  "logoutButton": "Cerrar sesión",
+  "resetPasswordTitle": "Recuperar contraseña",
+  "resetPasswordPrompt": "Ingresa tu correo electrónico para restablecer tu contraseña:",
+  "sendResetLink": "Enviar enlace de recuperación",
+  "emailSentMessage": "¡Correo enviado! Revisa tu bandeja de entrada.",
+  "unexpectedError": "Ocurrió un error inesperado."
 }
